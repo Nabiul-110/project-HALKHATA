@@ -4,8 +4,8 @@
 #include<windows.h>
 #include<string.h>
 #include<math.h>
-
-
+#include<stdlib.h>
+#include<dos.h>
 /// for animation
 void gotoxy(int x, int y)
 {
@@ -116,6 +116,7 @@ void write_tran() /// to write transaction
     ch=fopen("transaction.txt","w");
 
     if(ch==0)
+       // printf("COLOR 0A");
         printf("file doesnot exixit");
 
          num=0;
@@ -127,7 +128,7 @@ void write_tran() /// to write transaction
     for(i=0;i<id_num;i++)
     {
      int start = 0;
-
+      printf("COLOR 0A");
     fprintf(ch,"%s\n",id[i].userID);
     fprintf(ch,"%d\n",id[i].id_balance);
     fprintf(ch,"%d\n",id[i].tran_num);
@@ -489,11 +490,16 @@ void main_page()  /// account main page
 
 }
 
+
 void login()   ///login function
 {
-   gotoxy(50,2);
+    gotoxy(40,1);
 
-    printf("---------- login ----------");
+         printf("------------------------------------------------------------------");
+
+   gotoxy(50,2);
+      printf("---------- login ----------");
+
     char login_user_name[30],login_password[30];
 
     gotoxy(18,7);
@@ -640,13 +646,33 @@ void signup()   ///sign up function
  void First_page()
 {
      int n;
-    gotoxy(50,2);
-    printf("----------Welcome to HALKHATA----------");
-    gotoxy(30,8);
+     gotoxy(33,3);
+      printf(".......................................................");
+
+       gotoxy(33,5);
+      printf(".......................................................");
+         gotoxy(33,14);
+      printf(".......................................................");
+      for(int i=4;i<15;i++)
+         {
+          gotoxy(33,i);
+           printf(":");}
+             for(int i=4;i<15;i++)
+         {
+          gotoxy(87,i);
+           printf(":");}
+             gotoxy(56,13);
+    printf("-------------------");
+      gotoxy(56,11);
+    printf("-------------------");
+
+    gotoxy(50,4);
+    printf("Welcome to HALKHATA");
+    gotoxy(35,8);
     printf("1.Press 1 to login\n");
-    gotoxy(30,9);
+    gotoxy(35,10);
     printf("2.Press 2 to sign up\n\n");
-    gotoxy(50,15);
+    gotoxy(57,12);
     printf("Enter : ");
     scanf("%d",&n);
 
@@ -662,6 +688,7 @@ void signup()   ///sign up function
 
 int main()
 {
+     system("color 0A");
     First_page();
 
 }
